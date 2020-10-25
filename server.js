@@ -7,9 +7,9 @@ const yup = require('yup');
 const monk = require('monk');
 const { nanoid } = require('nanoid');
 
-const db = monk(
-  'mongodb+srv://admin:Dinodab99@lerpto.p6rxh.mongodb.net/lerpto?retryWrites=true&w=majority',
-);
+require('dotenv').config();
+
+const db = monk(process.env.MONGO_URI);
 const urls = db.get('shortUrls');
 urls.createIndex({ slug: 1 }, { unique: true });
 

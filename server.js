@@ -15,7 +15,11 @@ urls.createIndex({ slug: 1 }, { unique: true });
 
 const app = express();
 
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  }),
+);
 app.use(morgan('tiny'));
 app.use(cors());
 
@@ -50,6 +54,7 @@ const schema = yup.object().shape({
 });
 
 app.post('/url', async (req, res, next) => {
+  console.log(req.body);
   let { slug, url } = req.body;
   try {
     if (!slug) {

@@ -7,6 +7,8 @@ const Form = () => {
   let [start, setStart] = useState('start');
   let [finish, setFinish] = useState('finish');
   let [toggleLerp, setToggle] = useState(true);
+  let [toggleDone, setDone] = useState(false);
+  let [genUrl, setGenUrl] = useState('');
 
   const handleStart = (e) => {
     setStart(e.target.innerHTML);
@@ -14,6 +16,12 @@ const Form = () => {
 
   const handleFinish = (e) => {
     setFinish(e.target.innerHTML);
+  };
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(genUrl).then(() => {
+      console.log('copied!');
+    });
   };
 
   const handleLerp = () => {
@@ -24,49 +32,69 @@ const Form = () => {
       })
       .then(function (response) {
         console.log(response);
+        setGenUrl(`https://lerp.to/${response.data.slug}`);
+        setDone(true);
       })
       .catch(function (error) {
-        console.log(error);
+        console.log(res);
+        alert(error.message);
       });
   };
 
   useEffect(() => {
-    console.log('useEffect Popped!');
     if (start !== 'start' && finish !== 'finish') {
       setToggle(false);
     }
   }, [start, finish]);
 
   return (
-    <div className="functionForm animate__animated animate__fadeInDown">
-      <h4>
-        lerp(
-        <span
-          onInput={(e) => {
-            handleStart(e);
-          }}
-          className="input"
-          role="textbox"
-          contentEditable
-        >
-          {start}{' '}
-        </span>
-        ,
-        <span
-          onInput={(e) => {
-            handleFinish(e);
-          }}
-          className="input"
-          role="textbox"
-          contentEditable
-        >
-          {finish}{' '}
-        </span>
-        )
-      </h4>
-      <Button onClick={handleLerp} className="lerp" hidden={toggleLerp} variant="outline-dark">
-        Lerp!
-      </Button>
+    <div className="functionForm animate__animated animate__fadeInDown animate__delay-3s">
+      {toggleDone ? (
+        <div>
+          <button
+            style={{ border: 'none', backgroundColor: 'white' }}
+            onClick={(e) => handleCopy()}
+          >
+            📋
+          </button>
+          Here is yo shit
+          <br />
+          <a className="toCopy" href={genUrl}>
+            {genUrl}
+          </a>
+        </div>
+      ) : (
+        <div>
+          <h4>
+            lerp(
+            <span
+              onInput={(e) => {
+                handleStart(e);
+              }}
+              className="input"
+              role="textbox"
+              contentEditable
+            >
+              start
+            </span>
+            ,
+            <span
+              onInput={(e) => {
+                handleFinish(e);
+              }}
+              className="input"
+              role="textbox"
+              contentEditable
+            >
+              finish
+            </span>
+            )
+          </h4>
+          <Button onClick={handleLerp} className="lerp" hidden={toggleLerp} variant="outline-dark">
+            Lerp!
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

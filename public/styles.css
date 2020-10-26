@@ -4,10 +4,16 @@
   position: absolute;
   top: 0;
   left: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  animation-delay: 0.1s;
 }
 
 .header {
   height: 200px;
+}
+
+h4 {
+  text-align: center;
 }
 
 h1 {
@@ -17,7 +23,6 @@ h1 {
 
 .functionForm {
   text-align: center;
-  padding-top: 5%;
 }
 
 input {

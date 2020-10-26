@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import TypeIt from 'typeit-react';
-import { Jumbotron } from 'react-bootstrap';
-import ReactDOM from 'react-dom';
 import Form from './components/Form';
 
 const lerpJokes = [
@@ -15,7 +13,7 @@ const App = () => {
   return (
     <div className="app">
       <div className="header">
-        <h1>
+        <h1 className="head1">
           <TypeIt
             options={{
               strings: ['lerp.to'],
@@ -27,8 +25,9 @@ const App = () => {
             }}
           />
         </h1>
-        <h4>
+        <h4 className="head2">
           <TypeIt
+            style={{ fontSize: '3.5vw' }}
             options={{
               strings: [lerpJokes[Math.floor(Math.random() * lerpJokes.length)]],
               startDelay: 500,

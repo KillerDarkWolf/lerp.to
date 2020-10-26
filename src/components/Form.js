@@ -50,7 +50,7 @@ const Form = () => {
   return (
     <div className="functionForm animate__animated animate__fadeInDown animate__delay-3s">
       {toggleDone ? (
-        <div>
+        <div className="head2">
           <button
             style={{ border: 'none', backgroundColor: 'white' }}
             onClick={(e) => handleCopy()}
@@ -65,7 +65,7 @@ const Form = () => {
         </div>
       ) : (
         <div>
-          <h4>
+          <h4 className="head2">
             lerp(
             <span
               onInput={(e) => {
@@ -90,9 +90,9 @@ const Form = () => {
             </span>
             )
           </h4>
-          <Button onClick={handleLerp} className="lerp" hidden={toggleLerp} variant="outline-dark">
+          <button onClick={handleLerp} className="lerp" hidden={toggleLerp} variant="outline-dark">
             Lerp!
-          </Button>
+          </button>
         </div>
       )}
     </div>

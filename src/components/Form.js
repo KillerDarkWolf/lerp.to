@@ -57,7 +57,7 @@ const Form = () => {
           >
             📋
           </button>
-          Here is yo shit
+          Here is your link!
           <br />
           <a className="toCopy" href={genUrl}>
             {genUrl}
@@ -90,6 +90,13 @@ const Form = () => {
             </span>
             )
           </h4>
+          <p>
+            Lerping is as easy as defining your start (URL Ex<b> :</b> https://youtube.com), and
+            your finish (Shortend alias Ex<b> :</b> yt)
+          </p>
+          <p>
+            Ex : lerp(<b>https://youtube.com</b>, <b>yt</b>) = lerp.to/yt
+          </p>
           <button onClick={handleLerp} className="lerp" hidden={toggleLerp} variant="outline-dark">
             Lerp!
           </button>

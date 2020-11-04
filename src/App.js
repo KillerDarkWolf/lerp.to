@@ -15,6 +15,7 @@ const App = () => {
       <div className="header">
         <h1 className="head1">
           <TypeIt
+            style={{ fontSize: '4.5vw' }}
             options={{
               strings: ['lerp.to'],
               startDelay: 0,
@@ -27,7 +28,7 @@ const App = () => {
         </h1>
         <h4 className="head2">
           <TypeIt
-            style={{ fontSize: '3.5vw' }}
+            style={{ fontSize: '2vw' }}
             options={{
               strings: [lerpJokes[Math.floor(Math.random() * lerpJokes.length)]],
               startDelay: 500,
